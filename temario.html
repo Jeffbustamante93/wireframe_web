@@ -17,74 +17,56 @@ body {
     flex-direction: column;
     align-items: center;
 }
-
-
 #creditos1 {
-    width: 100%; /* Ocupa todo el ancho disponible */
-    margin-top: 0; /* Elimina cualquier separación con la parte superior */
-    margin-bottom: 40px; /* Agrega separación con los elementos inferiores */
-    padding: 8px; /* Reduce la altura al disminuir el padding */
+    width: 100%; 
+    margin-top: 0; 
+    margin-bottom: 40px; 
+    padding: 8px; 
     text-align: center;
     font-size: 14px;
     color: #555;
     background-color: #f4f4f4;
-    border: 2px solid #ccc; /* Borde sutil */
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    border: 2px solid #ccc;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); 
 }
-
-
-
-/* Línea de separación con rótulo en el centro */
 .separator {
     position: absolute;
-    top: 140px; /* Ajusta la separación desde la parte superior */
+    top: 140px; 
     left: 50%;
     transform: translateX(-50%);
     width: 90%;
-    border-top: 2px dashed #8c8c8c; /* Línea estilo acotación */
+    border-top: 2px dashed #8c8c8c; 
     text-align: center;
 }
-
-/* Rótulo sobre la línea */
 .separator::before {
-    content: "⬇ Inicia Pagina WEB - Temario Curso ⬇"; /* Texto del rótulo */
+    content: "⬇ Inicia Pagina WEB - Temario Curso ⬇"; 
     position: absolute;
-    top: -12px; /* Lo eleva para que quede sobre la línea */
+    top: -12px; 
     left: 50%;
     transform: translateX(-50%);
-    background: #f0f0f0; /* Fondo del rótulo */
+    background: #f0f0f0; 
     padding: 3px 8px;
     font-size: 14px;
     color: #4a4a4a;
     font-weight: bold;
     border-radius: 4px;
 }
-
-
-
-/* Contenedor invisible que envuelve todo */
 #main-container {
     width: 100%;
-    min-height: 100vh; /* Se ajusta automáticamente según el contenido */
+    min-height: 100vh; 
     display: flex;
-    flex-direction: column; /* Mantiene la disposición de los elementos */
+    flex-direction: column; 
     align-items: center;
-    justify-content: flex-start; /* Asegura que el contenido se mantenga en su lugar */
-    position: relative; /* No afecta elementos absolutos dentro */
-	top: 120px; /* Ajusta este valor para moverlo más o menos */
+    justify-content: flex-start; 
+    position: relative; 
+	top: 120px; 
 }
-
-
-
-
 /* Timeline-header */
-
 @keyframes animate-border {
     0% { border-style: dashed; }
     50% { border-style: dotted; } 
     100% { border-style: dashed; } 
 }
-
 .timeline-header {
     text-align: center;
     font-size: 26px;
@@ -92,20 +74,18 @@ body {
     margin-bottom: 30px;
     padding: 20px;
     border: 3px dashed #444;
-    background-color: #e0e0e0; /* Color más suave */
+    background-color: #e0e0e0; 
     width: 60%;
     border-radius: 12px;
     box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15);
     animation: animate-border 1s linear infinite;
 }
-
 /* Efecto hover */
 .timeline-header:hover {
     border-color: #007bff;
     background-color: #dcdcdc;
     box-shadow: 6px 6px 16px rgba(0, 0, 0, 0.2);
 }
-
 /* Contenedor principal */
 .timeline-container {
     width: 80%;
@@ -114,8 +94,6 @@ body {
     flex-direction: column;
     align-items: center;
 }
-
-/* Línea central de la línea de tiempo */
 .timeline {
     position: absolute;
     width: 4px;
@@ -126,8 +104,6 @@ body {
     transform: translateX(-50%);
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
 }
-
-/* Estilos generales */
 .item {
     width: 40%;
     padding: 15px;
@@ -144,34 +120,26 @@ body {
     opacity: 60.7;
     cursor: pointer;
 }
-
-/* Efecto hover (naranja con borde azul, pero más elegante) */
 .item:hover {
-    background-color: #a5d0e6; /* Naranja más sutil */
-    border-color: #0056b3; /* Azul más oscuro */
+    background-color: #a5d0e6; 
+    border-color: #0056b3; 
     transform: scale(1.03);
     box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.2);
     opacity: 1;
 }
-
-/* Efecto de encendido secuencial solo en el borde con azul brillante */
 .item.active {
     border-color: #00ccff; /* Azul eléctrico más brillante */
     box-shadow: 0 0 15px rgba(0, 204, 255, 0.9), 
                 0 0 10px rgba(0, 204, 255, 0.7) inset;
 }
-
 .left {
     align-self: flex-start;
     margin-left: 0;
 }
-
 .right {
     align-self: flex-end;
     margin-right: 0;
 }
-
-/* Puntos de la línea de tiempo */
 .dot {
     width: 14px;
     height: 14px;
@@ -214,15 +182,11 @@ body {
     animation: animate-border 1s linear infinite;
     transition: all 0.3s ease;
 }
-
-/* Efecto hover */
 .footer:hover {
     border-color: #007bff;
     background-color: #dcdcdc;
     box-shadow: 6px 6px 16px rgba(0, 0, 0, 0.2);
 }
-
-/* POPUP */
 .popup-container {
     display: none;
     position: fixed;
@@ -235,8 +199,6 @@ body {
     align-items: center;
     z-index: 1000;
 }
-
-/* Contenido del popup */
 .popup-content {
     background: #fff;
     padding: 20px;
@@ -248,19 +210,13 @@ body {
     box-shadow: 6px 6px 16px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
 }
-
-/* Efecto hover */
 .popup-content:hover {
     box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.25);
 }
-
-/* Video dentro del popup */
 .popup-content video {
     width: 100%;
     border-radius: 8px;
 }
-
-/* Botón de cierre */
 .close-btn {
     position: absolute;
     top: 10px;
@@ -270,15 +226,10 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
 }
-
-/* Efecto hover en botón de cierre */
 .close-btn:hover {
     color: #ff0000;
     transform: scale(1.1);
 }
-
-
-/* Título dentro del popup */
 .popup-title {
     font-size: 24px;
     font-weight: bold;
@@ -287,49 +238,35 @@ body {
     text-align: center;
     animation: fadeIn 1s ease-in-out;
 }
-
-/* Animación de entrada */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-10px); }
     to { opacity: 1; transform: translateY(0); }
 }
-
-
-
-
-/* Línea de separación con rótulo en el centro - Fin web */
 .separator_fin {
     position: absolute;
-    bottom: -800px; /* Ajusta la separación desde la parte superior */
+    bottom: -800px; 
     left: 50%;
     transform: translateX(-50%);
     width: 90%;
-    border-top: 2px dashed #8c8c8c; /* Línea estilo acotación */
+    border-top: 2px dashed #8c8c8c; 
     text-align: center;
 }
-
-/* Rótulo sobre la línea - Fin web */
 .separator_fin::before {
-    content: "Termina pagina WEB - Temario Curso"; /* Texto del rótulo */
+    content: "Termina pagina WEB - Temario Curso"; 
     position: absolute;
-    top: -12px; /* Lo eleva para que quede sobre la línea */
+    top: -12px; 
     left: 50%;
     transform: translateX(-50%);
-    background: #f0f0f0; /* Fondo del rótulo */
+    background: #f0f0f0; 
     padding: 3px 8px;
     font-size: 14px;
     color: #4a4a4a;
     font-weight: bold;
     border-radius: 4px;
 }	
-	
-
-
-
-
 #acordeon {
         font-size: 16px;
-        margin: 60px auto 220px; /* Aumentado el margen inferior */
+        margin: 60px auto 220px; 
         background: #f0f0f0;
         padding: 20px;
         border: 2px solid #b0b0b0;
@@ -338,15 +275,13 @@ body {
         width: 80%;
         max-width: 800px;
         position: relative;
-		top: 180px; /* Ajusta este valor según necesites */
+		top: 180px; 
     }
-
     #acordeon h2 {
         text-align: center;
         margin-bottom: 20px;
         color: #333;
     }
-
     .acordeon-item {
         background: #e0e0e0;
         margin: 5px 0;
@@ -355,11 +290,9 @@ body {
         cursor: pointer;
         font-weight: bold;
     }
-
     .acordeon-item:hover {
         background: #d0d0d0;
     }
-
     .contenido {
         display: none;
         padding: 10px;
@@ -368,42 +301,29 @@ body {
         margin-top: 5px;
         background: #f9f9f9;
     }
-
-   
-
-
 #creditos1 {
-    width: 100%; /* Ocupa todo el ancho disponible */
-    margin-top: 40; /* Elimina cualquier separación con la parte superior */
-    margin-bottom: 0px; /* Agrega separación con los elementos inferiores */
-    padding: 8px; /* Reduce la altura al disminuir el padding */
+    width: 100%; 
+    margin-top: 40; 
+    margin-bottom: 0px; 
+    padding: 8px; 
     text-align: center;
     font-size: 14px;
     color: #555;
     background-color: #f4f4f4;
-    border: 2px solid #ccc; /* Borde sutil */
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    border: 2px solid #ccc; 
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); 
 }
-
-
     </style>
 </head>
 <body>
 
-<!-- Contenedor adicional para mostrar el crédito de diseño y desarrollo -->
 <div id="creditos1">
     <p>Diseño y desarrollo de Wireframe por <strong>Jeffrey Bustamante</strong></p>
 </div>
-
 <div class="separator"></div>
 
-
-<!-- Contenedor invisible que envuelve todo -->
     <div id="main-container">
-	
-
-    <div class="timeline-header">APRENDAMOS BLENDER - UNIDADES TEMATICAS</div>
-
+<div class="timeline-header">APRENDAMOS BLENDER - UNIDADES TEMATICAS</div>
 
 <div class="timeline-container">
     <div class="timeline"></div>
@@ -426,18 +346,10 @@ body {
         <div>Diseño Visual: Jeffrey Bustamante</div>
         <div>2025</div>
     </div>
-	
-	
 </div>	
-	
-	
+
 <div class="separator_fin"></div>
-	
-	
-	
-	
-	
-<!-- Acordeón de información adicional -->
+
 <div id="acordeon">
     <h2>Más información sobre el proyecto</h2>
     
@@ -486,16 +398,11 @@ body {
         </ul>
     </div>
 </div>
-	
-	
 
 <!-- Contenedor adicional para mostrar el crédito de diseño y desarrollo -->
 <div id="creditos1">
     <p>Diseño y desarrollo de Wireframe por <strong>Jeffrey Bustamante</strong></p>
 </div>
-
-
-
 
     <!-- POPUP AUTOMÁTICO -->
 <div class="popup-container" id="popup">
@@ -513,45 +420,45 @@ body {
 </div>
 
     <script>
-        // Mostrar popup automáticamente al cargar la página
+        
         window.onload = function () {
             document.getElementById("popup").style.display = "flex";
         };
 
-        // Cerrar popup y pausar el video
+    
         function closePopup() {
             document.getElementById("popup").style.display = "none";
             document.getElementById("popupVideo").pause();
         }
 		
 		
-// Obtener todos los elementos de la línea de tiempo
+
 const items = document.querySelectorAll('.item');
 let index = 0;
 
 function animateItems() {
-    // Eliminar el efecto 'active' de todos los elementos
+   
     items.forEach(item => item.classList.remove('active'));
 
-    // Aplicar el efecto solo al elemento actual
+
     items[index].classList.add('active');
 
-    // Mover al siguiente elemento
+
     index = (index + 1) % items.length;
 }
 
-// Iniciar animación cada 2 segundos
+
 setInterval(animateItems, 1500);
 
 
 
-// Asignar evento de clic para redireccionar
+
 items.forEach(item => {
     item.addEventListener('click', function () {
         const modalNumber = this.getAttribute('data-modal');
         const modalUrl = `assets/modal/modal_${modalNumber}.html`;
 
-        // Reemplazar contenido dentro de la página
+       
         fetch(modalUrl)
             .then(response => response.text())
             .then(data => {
@@ -564,10 +471,7 @@ items.forEach(item => {
     });
 });
 		
-	
 
-
-// Acordeon Info
 document.querySelectorAll('.acordeon-item').forEach(item => {
         item.addEventListener('click', function () {
             let contenido = this.nextElementSibling;
