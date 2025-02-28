@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireframe Timeline</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Encabezado de la línea de tiempo */
+.timeline-header {
+    text-align: center;
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 3px dashed #444;
+    background-color: #e0e0e0; /* Color más suave */
+    width: 60%;
+    border-radius: 12px;
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+/* Efecto hover */
+.timeline-header:hover {
+    border-color: #007bff;
+    background-color: #dcdcdc;
+    box-shadow: 6px 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Contenedor principal */
+.timeline-container {
+    width: 80%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Línea central de la línea de tiempo */
+.timeline {
+    position: absolute;
+    width: 4px;
+    background-color: #555;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Estilos generales */
+.item {
+    width: 40%;
+    padding: 15px;
+    border: 2px solid #666;
+    background-color: #e0e0e0;
+    margin: 20px 0;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.8s ease-in-out;
+    opacity: 0.7;
+}
+
+/* Efecto hover (naranja con borde azul, pero más elegante) */
+.item:hover {
+    background-color: #a5d0e6; /* Naranja más sutil */
+    border-color: #0056b3; /* Azul más oscuro */
+    transform: scale(1.03);
+    box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.2);
+    opacity: 1;
+}
+
+/* Efecto de encendido secuencial (azul plateado más sutil) */
+.item.active {
+    background-color: #73c3eb; /* Azul plateado más elegante */
+    border-color: #5f7890; /* Gris azulado más neutro */
+    transform: scale(1.03);
+    box-shadow: 6px 6px 16px rgba(127, 152, 181, 0.2);
+    opacity: 1;
+}
+
+/* Animación de brillo más tenue */
+@keyframes glow {
+    0% { box-shadow: 0 0 5px rgba(127, 152, 181, 0.2); }
+    50% { box-shadow: 0 0 15px rgba(127, 152, 181, 0.3); }
+    100% { box-shadow: 0 0 5px rgba(127, 152, 181, 0.2); }
+}
+
+.item.active {
+    animation: glow 2s infinite alternate;
+}
+
+
+    .left {
+        align-self: flex-start;
+        margin-left: 0;
+    }
+
+    .right {
+        align-self: flex-end;
+        margin-right: 0;
+    }
+
+    /* Puntos de la línea de tiempo */
+    .dot {
+        width: 14px;
+        height: 14px;
+        background-color: #007bff;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .left .dot {
+        right: -24px;
+    }
+
+    .right .dot {
+        left: -24px;
+    }
+
+/* Pie de página */
+.footer {
+    width: 80%;
+    margin-top: 30px;
+    padding: 20px;
+    border: 3px dashed #444;
+    background-color: #e0e0e0;
+    text-align: center;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+/* Efecto hover */
+.footer:hover {
+    border-color: #007bff;
+    background-color: #dcdcdc;
+    box-shadow: 6px 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* POPUP */
+.popup-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Contenido del popup */
+.popup-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    width: 60%;
+    max-width: 800px;
+    box-shadow: 6px 6px 16px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+/* Efecto hover */
+.popup-content:hover {
+    box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Video dentro del popup */
+.popup-content video {
+    width: 100%;
+    border-radius: 8px;
+}
+
+/* Botón de cierre */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Efecto hover en botón de cierre */
+.close-btn:hover {
+    color: #ff0000;
+    transform: scale(1.1);
+}
+
+
+/* Título dentro del popup */
+.popup-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+    </style>
+</head>
+<body>
+
+    <div class="timeline-header">APRENDAMOS BLENDER UNADISTAS</div>
+
+    <div class="timeline-container">
+        <div class="timeline"></div>
+        <div class="item left">Introducción a Blender <span class="dot"></span></div>
+        <div class="item right"><span class="dot"></span> Interfaz y Navegación</div>
+        <div class="item left">Modelado 3D Básico <span class="dot"></span></div>
+        <div class="item right"><span class="dot"></span> Texturizado y Materiales</div>
+        <div class="item left">Iluminación y Render <span class="dot"></span></div>
+        <div class="item right"><span class="dot"></span> Animación Básica</div>
+        <div class="item left">Esculpido Digital <span class="dot"></span></div>
+        <div class="item right"><span class="dot"></span> Simulación de Física</div>
+        <div class="item left">Efectos y Composición <span class="dot"></span></div>
+        <div class="item right"><span class="dot"></span> Exportación y Optimización</div>
+    </div>
+
+    <div class="footer">
+        <div><strong>Proyecto de Ingeniería 2</strong></div>
+        <div>Diseño y Desarrollo Web: Jeffrey Bustamante</div>
+        <div>Didáctica y estructura educativa medinate: Licencias - CC Colombia - Creative Commons</div>
+        <div>Diseño Visual: Jeffrey Bustamante</div>
+        <div>2025</div>
+    </div>
+
+    <!-- POPUP AUTOMÁTICO -->
+<div class="popup-container" id="popup">
+    <div class="popup-content">
+        <span class="close-btn" onclick="closePopup()">&times;</span>
+        
+        <!-- TÍTULO DENTRO DEL POPUP -->
+        <h2 class="popup-title">Bienvenidos a Blender desde Cero</h2>
+        
+        <video id="popupVideo" controls autoplay>
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            Tu navegador no soporta videos.
+        </video>
+    </div>
+</div>
+
+    <script>
+        // Mostrar popup automáticamente al cargar la página
+        window.onload = function () {
+            document.getElementById("popup").style.display = "flex";
+        };
+
+        // Cerrar popup y pausar el video
+        function closePopup() {
+            document.getElementById("popup").style.display = "none";
+            document.getElementById("popupVideo").pause();
+        }
+		
+		
+// Obtener todos los elementos de la línea de tiempo
+const items = document.querySelectorAll('.item');
+let index = 0;
+
+function animateItems() {
+    // Eliminar el efecto 'active' de todos los elementos suavemente
+    items.forEach(item => {
+        item.classList.remove('active');
+        item.style.opacity = "60.7"; // Opacidad sutil
+    });
+
+    // Aplicar el efecto solo al elemento actual con una transición más fluida
+    items[index].classList.add('active');
+    items[index].style.opacity = "1"; // Destaca el activo
+
+    // Mover al siguiente elemento
+    index = (index + 1) % items.length;
+}
+
+// Iniciar animación cada 2 segundos para hacerlo más pausado
+setInterval(animateItems, 1000);
+		
+		
+		
+		
+		
+		
+		
+    </script>
+
+</body>
+</html>

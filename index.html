@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireframe Proyecto index</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+/* Estilos generales del cuerpo */
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    background-color: #eaeaea;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: block; /* Cambiado de flex a block */
+}
+
+/* Contenedor de información */
+#guide-info {
+    font-size: 16px;
+    margin: 40px auto 20px;
+    background: #f8f8f8;
+    padding: 25px;
+    border: 2px solid #666;
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+    width: 80%;
+    max-width: 800px;
+    transition: all 0.3s ease;
+}
+
+#guide-info h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.guide-acordeon-item {
+    background: #e0e0e0;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #444;
+    border: 2px solid #999;
+    transition: all 0.3s ease;
+}
+
+.guide-acordeon-item:hover {
+    background: #d0d0d0;
+    border-color: #007bff;
+    transform: translateX(5px);
+}
+
+.guide-contenido {
+    display: none;
+    padding: 15px;
+    color: #444;
+    border-left: 4px solid #007bff;
+    margin-top: 10px;
+    background: #f9f9f9;
+    border-radius: 0 0 8px 8px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.guide-contenido.activo {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+
+
+
+
+/* Contenedor invisible que envuelve todo */
+#main-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative; /* Mantiene su estructura sin afectar #spa-info */
+}
+
+
+
+/* Línea de separación con rótulo en el centro */
+.separator {
+    position: absolute;
+    top: 10px; /* Ajusta la separación desde la parte superior */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    border-top: 2px dashed #8c8c8c; /* Línea estilo acotación */
+    text-align: center;
+}
+
+/* Rótulo sobre la línea */
+.separator::before {
+    content: "⬇ Inicia Sitio WEB - Index Principal ⬇"; /* Texto del rótulo */
+    position: absolute;
+    top: -12px; /* Lo eleva para que quede sobre la línea */
+    left: 50%;
+    transform: translateX(-50%);
+    background: #f0f0f0; /* Fondo del rótulo */
+    padding: 3px 8px;
+    font-size: 14px;
+    color: #4a4a4a;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+
+  /* Estilo Container */
+@keyframes animate-border {
+    0% { border-style: dashed; }
+    50% { border-style: dotted; } 
+    100% { border-style: dashed; } 
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%; /* Ancho personalizable */
+    height: 80vh; /* Altura personalizable */
+    max-width: 1300px;
+    border: 3px dashed #444; /* Borde punteado gris oscuro */
+    padding: 30px;
+    background: #fff;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    gap: 30px;
+    animation: animate-border 1s linear infinite; /* Animación de borde */
+}
+  /* Fin Estilo Container */
+
+    /* Estilo de las barras laterales */
+.sidebar {
+    width: 20%; /* Ancho personalizable */
+    height: 95%; /* Altura personalizable */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid #333;
+    padding: 20px;
+    background: #f8f8f8;
+    border-radius: 12px; /* Bordes más redondeados */
+    border: 2px dashed #666; /* Borde punteado más oscuro */
+    gap: 15px;
+    overflow: hidden; /* Para ocultar el contenido que se desborda */
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
+    transition: all 0.3s ease; /* Transición suave para efectos */
+}
+
+/* Efecto hover en la barra lateral */
+.sidebar:hover {
+    border-color: #007bff; /* Cambio de color del borde al pasar el mouse */
+    box-shadow: 6px 6px 16px rgba(0, 0, 0, 0.2); /* Sombra más intensa */
+}
+
+/* Elementos dentro de la barra lateral */
+.sidebar div {
+    width: 100%;
+    height: 80px;
+    background: #e0e0e0; /* Fondo más claro */
+    border: 2px solid #999; /* Borde más suave */
+    text-align: center;
+    line-height: 60px;
+    font-weight: bold;
+    color: #444; /* Color de texto más oscuro */
+    border-radius: 8px; /* Bordes más redondeados */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease; /* Transiciones suaves */
+}
+
+/* Efecto hover en los elementos del sidebar */
+.sidebar div:hover {
+    transform: scale(1.05); /* Agrandar al pasar el mouse */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25); /* Sombra más pronunciada */
+    background: #d0d0d0; /* Cambio de fondo al pasar el mouse */
+    border-color: #007bff; /* Borde azul al pasar el mouse */
+}
+
+/* Flechas de navegación en las barras laterales */
+.arrow {
+    text-align: center;
+    font-size: 24px;
+    color: #555;
+    cursor: pointer;
+    transition: color 0.3s ease; /* Transición suave para el color */
+}
+
+/* Efecto hover en las flechas */
+.arrow:hover {
+    color: #007bff; /* Cambio de color al pasar el mouse */
+}
+
+/* Texto pequeño dentro del mismo bloque */
+.arrow::after {
+    content: "Las imágenes suben";
+    display: block;
+    font-size: 10px;
+    color: #777;
+    margin-top: -30px;
+    transition: color 0.3s ease; /* Transición suave para el color */
+}
+
+/* Efecto hover en el texto pequeño */
+.arrow:hover::after {
+    color: #007bff; /* Cambio de color al pasar el mouse */
+}
+	
+	
+	
+
+    /* Contenido central */
+.central-content {
+    width: 60%; /* Ancho personalizable */
+    height: 91.5%; /* Altura personalizable */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Alinea el contenido al inicio */
+    border: 3px solid #333;
+    padding: 30px;
+    background: #f5f5f5;
+    border-radius: 12px; /* Bordes más redondeados */
+    border: 2px dashed #666; /* Borde punteado más oscuro */
+    gap: 20px;
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
+    transition: all 0.3s ease; /* Transición suave para efectos */
+}
+
+/* Efecto hover en el contenido central */
+.central-content:hover {
+    border-color: #007bff; /* Cambio de color del borde al pasar el mouse */
+    box-shadow: 6px 6px 16px rgba(0, 0, 0, 0.2); /* Sombra más intensa */
+}
+
+/* Nombre del proyecto */
+.project-name {
+    width: 80%; /* Más largo */
+    text-align: center;
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 15px;
+    border: 3px solid #333;
+    padding: 15px;
+    background: #e0e0e0; /* Fondo más claro */
+    border-radius: 12px; /* Bordes más redondeados */
+    color: #444; /* Color de texto más oscuro */
+    transition: all 0.3s ease; /* Transición suave para efectos */
+}
+
+/* Efecto hover en el nombre del proyecto */
+.project-name:hover {
+    transform: scale(1.02); /* Escala sutil al pasar el mouse */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25); /* Sombra más pronunciada */
+    border-color: #007bff; /* Borde azul al pasar el mouse */
+}
+
+/* Logo de la marca */
+.brand-logo {
+    width: 20%; /* Más ancho */
+    height: auto; /* Altura automática */
+    text-align: center;
+    margin-bottom: 15px;
+    border: 3px solid #333;
+    padding: 15px;
+    background: #e0e0e0; /* Fondo más claro */
+    border-radius: 12px; /* Bordes más redondeados */
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
+    transition: all 0.3s ease; /* Transición suave para efectos */
+}
+
+/* Efecto hover en el logo de la marca */
+.brand-logo:hover {
+    transform: scale(1.05); /* Agrandar al pasar el mouse */
+    box-shadow: 6px 6px 16px rgba(0, 0, 0, 0.25); /* Sombra más intensa */
+    border-color: #007bff; /* Borde azul al pasar el mouse */
+}
+
+/* Imagen del logo */
+.brand-logo img {
+    width: 100%; /* Ocupa todo el ancho del contenedor */
+    height: auto; /* Altura automática */
+    border-radius: 8px; /* Bordes más redondeados */
+}
+
+/* Contenedor de botones */
+.buttons-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    border: 3px solid #333;
+    padding: 15px;
+    width: 60%;
+    background: #e0e0e0; /* Fondo más claro */
+    border-radius: 12px; /* Bordes más redondeados */
+    margin-top: 20px; /* Empuja el contenedor hacia abajo */
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
+    transition: all 0.3s ease; /* Transición suave para efectos */
+}
+
+/* Efecto hover en el contenedor de botones */
+.buttons-container:hover {
+    transform: scale(1.02); /* Escala sutil al pasar el mouse */
+    box-shadow: 6px 6px 16px rgba(0, 0, 0, 0.25); /* Sombra más intensa */
+    border-color: #007bff; /* Borde azul al pasar el mouse */
+}
+
+/* Botones */
+.button {
+    padding: 10px 20px;
+    background-color: #4a4a4a;
+    color: white;
+    border-radius: 8px; /* Bordes más redondeados */
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    transition: all 0.3s ease; /* Transición suave para efectos */
+    animation: parpadeo 1s infinite alternate; /* Animación de parpadeo */
+}
+
+/* Efecto hover en los botones (detiene el parpadeo y mantiene encendido) */
+.button:hover {
+    background-color: #007bff; /* Cambio de color al pasar el mouse */
+    transform: scale(1.05); /* Escala sutil al pasar el mouse */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25); /* Sombra más pronunciada */
+    animation: none; /* Detiene el parpadeo */
+}
+
+/* Animación de parpadeo */
+@keyframes parpadeo {
+    0% {
+        background-color: #4a4a4a;
+        box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+    }
+    100% {
+        background-color: #007bff;
+        box-shadow: 0 0 15px rgba(0, 123, 255, 0.8);
+    }
+}
+
+/* Estilos del Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 300px;
+}
+
+input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.avatar-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.avatar:hover {
+    border-color: #007bff;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+   
+    /* Pie de página con un diseño más atractivo */
+.footer-container {
+    margin-top: auto; /* Mantiene el footer en su lugar */
+    padding: 20px;
+    border: 3px solid #333;
+    text-align: center;
+    background: linear-gradient(135deg, #eeeeee, #cccccc); /* Fondo con degradado */
+    width: 75%;
+    border-radius: 12px;
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    color: #333;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para resaltar */
+    transition: all 0.3s ease-in-out;
+}
+
+/* Efecto hover para hacer el footer más dinámico */
+.footer-container:hover {
+    background: linear-gradient(135deg, #dddddd, #bbbbbb);
+    transform: scale(1.02);
+}
+
+/* Estilos para el texto del footer */
+.footer-container p {
+    margin: 0;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+}
+
+/* Animación sutil al pasar el cursor */
+.footer-container:hover p {
+    color: #000;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+	
+	
+	
+	
+/* Línea de separación con rótulo en el centro - Fin web */
+.separator_fin {
+    position: absolute;
+    top: 765px; /* Ajusta la separación desde la parte superior */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    border-top: 2px dashed #8c8c8c; /* Línea estilo acotación */
+    text-align: center;
+}
+
+/* Rótulo sobre la línea - Fin web */
+.separator_fin::before {
+    content: "Termina Sitio WEB - Index Principal"; /* Texto del rótulo */
+    position: absolute;
+    top: -12px; /* Lo eleva para que quede sobre la línea */
+    left: 50%;
+    transform: translateX(-50%);
+    background: #f0f0f0; /* Fondo del rótulo */
+    padding: 3px 8px;
+    font-size: 14px;
+    color: #4a4a4a;
+    font-weight: bold;
+    border-radius: 4px;
+}	
+	
+	
+	
+	
+#acordeon {
+    font-size: 16px;
+    margin: 60px auto 40px; /* Separa del contenido superior e inferior */
+    background: #f0f0f0;
+    padding: 20px; /* Espacio interno */
+    border: 2px solid #b0b0b0;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 80%;
+    max-width: 800px;
+    position: relative; /* Permite que se mueva con margin */
+}
+
+ /* Título */
+        #acordeon h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        /* Botón del acordeón */
+        .acordeon-item {
+            background: #e0e0e0;
+            margin: 5px 0;
+            padding: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .acordeon-item:hover {
+            background: #d0d0d0;
+        }
+
+        /* Contenido oculto */
+        .contenido {
+            display: none;
+            padding: 10px;
+            color: #333;
+            border-left: 3px solid #888;
+            margin-top: 5px;
+            background: #f9f9f9;
+        }	
+	
+		#creditos {
+        margin-top: 20px;
+        padding: 10px;
+        text-align: center;
+        font-size: 14px;
+        color: #555;
+        background-color: #f4f4f4;
+        border-top: 2px solid #ccc;
+    }
+	
+	
+</style>
+</head>
+<body>
+	
+	
+<!-- Contenedor adicional para mostrar el crédito de diseño y desarrollo -->
+<div id="creditos">
+    <p>Diseño y desarrollo de Wireframe por <strong>Jeffrey Bustamante</strong></p>
+</div>
+	
+
+
+<!-- Contenedor de información con acordeón -->
+<div id="guide-info">
+    <h2>Wireframe - Desarrollo de Sitio Web - Educación en Blender</h2>
+
+    <!-- Acordeón dentro de #guide-info -->
+    
+
+    <div class="guide-acordeon-item" onclick="toggleGuideContenido(0)">1. Estructura del Wireframe - (Hacer clic)</div>
+    <div class="guide-contenido">
+        <p>El wireframe diseñado aquí representa una página <strong>dinámica</strong>, donde la página principal (index) actúa como el núcleo de navegación del sitio educativo.</p>
+        <ul>
+            <li>Todos los elementos están estructurados en <strong>HTML y CSS</strong>.</li>
+            <li>Se evita el uso de herramientas de diseño intermedias como Figma, Adobe XD o Dreamweaver.</li>
+            <li>Esta metodología se usa en entornos profesionales y empresas como Google o agencias de desarrollo.</li>
+        </ul>
+    </div>
+
+    <div class="guide-acordeon-item" onclick="toggleGuideContenido(1)">2. Ventajas del Enfoque Usado - (Hacer clic)</div>
+    <div class="guide-contenido">
+        <p>El enfoque utilizado ofrece varias ventajas:</p>
+        <ul>
+            <li><strong>Desarrollo Ágil:</strong> Se trabaja directamente en HTML y CSS, evitando pasos adicionales en herramientas de diseño.</li>
+            <li><strong>Menos Reprocesos:</strong> Se mantiene un flujo de trabajo más eficiente.</li>
+            <li><strong>Edición Sencilla:</strong> Los cambios se aplican en un solo documento, facilitando la actualización y mantenimiento.</li>
+            <li><strong>Optimización en Hosting:</strong> Al contar con una estructura ligera, el sitio web puede alojarse fácilmente.</li>
+            <li><strong>Carga Rápida:</strong> La SPA permite una experiencia fluida al cargar contenido dinámicamente sin recargar la página.</li>
+        </ul>
+    </div>
+</div>
+
+
+
+	
+
+		
+		
+	<!-- Contenedor invisible que envuelve todo -->
+    <div id="main-container">
+	
+		<div class="separator"></div>
+	
+	
+    <!-- Contenedor principal -->
+    <div class="container">
+        <!-- Barra lateral izquierda -->
+        <div class="sidebar" id="left-sidebar">
+            <div class="arrow" onclick="moveSidebarUp('left-sidebar')"> ⬆</div>
+            <div>Imagen 1</div>
+            <div>Imagen 2</div>
+            <div>Imagen 3</div>
+            <div>Imagen 4</div>
+            <div class="arrow" onclick="moveSidebarDown('left-sidebar')">⬇</div>
+        </div>
+
+        <!-- Contenedor central -->
+        <div class="central-content">
+            <!-- Título del proyecto -->
+            <div class="project-name">Blender Para Todos</div>
+
+            <!-- Logo de la marca -->
+            <div class="brand-logo">
+                <img src="brand.png" alt="Brand Logo">
+            </div>
+
+		<!-- Botones de inicio de sesión -->
+        <div class="buttons-container">
+            <div class="button" onclick="openModal()">Entrar</div>
+                </div>
+
+
+
+
+            <!-- Pie de página -->
+            <div class="footer-container">
+                Proyecto de Ingeniería 2<br>
+                Diseño y Desarrollo Web por Jeffrey Bustamante<br>
+                Wireframe - Pagina de Inicio
+            </div>
+        </div>
+
+        <!-- Barra lateral derecha -->
+        <div class="sidebar" id="right-sidebar">
+            <div class="arrow" onclick="moveSidebarUp('right-sidebar')">⬆</div>
+            <div>Imagen 5</div>
+            <div>Imagen 6</div>
+            <div>Imagen 7</div>
+            <div>Imagen 8</div>
+            <div class="arrow" onclick="moveSidebarDown('right-sidebar')">⬇</div>
+        </div>
+    </div>
+	
+	
+	<!-- Modal -->
+    <div id="userModal" class="modal">
+        <div class="modal-content">
+            <h2>Ingrese su nombre y seleccione un avatar</h2>
+            
+            <label for="username">Nombre:</label>
+            <input type="text" id="username" placeholder="Escribe tu nombre aquí">
+
+            <h3>Selecciona un avatar:</h3>
+            <div class="avatar-container">
+                <img src="avatar1.png" class="avatar" onclick="selectAvatar('avatar1.png')">
+                <img src="avatar1.png" class="avatar" onclick="selectAvatar('avatar1.png')">
+                <img src="avatar1.png" class="avatar" onclick="selectAvatar('avatar1.png')">
+            </div>
+
+            <button onclick="confirmUser()">Confirmar</button>
+        </div>
+    </div>
+
+	
+			<div class="separator_fin"></div>
+
+	
+</div>
+
+
+	<!-- Explicación sobre SPA fuera del contenedor principal -->
+<div id="acordeon">
+    <h2>Sustentaciòn Pagina Principal - Index "Blender Para Todos"</h2>
+
+    <div class="acordeon-item" onclick="toggleContenido(0)">1. Contenedor Principal - (Hacer clic)</div>
+    <div class="contenido">
+        <p>El sitio web está construido dentro de un div principal con la clase <strong>container</strong>, que organiza el contenido en tres secciones principales:</p>
+        <ul>
+            <li><strong>Barra lateral izquierda (left-sidebar):</strong> Contiene imágenes representativas de personajes y modelos creados en Blender.</li>
+            <li><strong>Contenedor central (central-content):</strong> Aquí se encuentra el título del proyecto, el logo y el botón de entrada al sistema.</li>
+            <li><strong>Barra lateral derecha (right-sidebar):</strong> Muestra productos terminados de modelado y texturización en Blender.</li>
+        </ul>
+        <p>Esta distribución permite una navegación equilibrada y organizada, destacando el proceso y resultado final del uso de Blender.</p>
+    </div>
+
+    <div class="acordeon-item" onclick="toggleContenido(1)">2. Barra Lateral Izquierda (left-sidebar) - (Hacer clic)</div>
+    <div class="contenido">
+        <p>Contiene imágenes representativas de personajes modelados en Blender.</p>
+        <p>Incluye botones de navegación en forma de flechas (⬆ y ⬇) con funciones <strong>moveSidebarUp()</strong> y <strong>moveSidebarDown()</strong>.</p>
+        <p>Se muestran modelos en proceso, destacando el modelado y texturización.</p>
+    </div>
+
+    <div class="acordeon-item" onclick="toggleContenido(2)">3. Contenedor Central (central-content) - (Hacer clic)</div>
+    <div class="contenido">
+        <p>El núcleo del proyecto, con los siguientes elementos:</p>
+        <ul>
+            <li><strong>Título:</strong> Blender Para Todos.</li>
+            <li><strong>Logo:</strong> Imagen en un div con <code>img src="brand.png"</code>.</li>
+            <li><strong>Botón de entrada:</strong> Activa la función <strong>openModal()</strong> para abrir un modal.</li>
+            <li><strong>Pie de página:</strong> Información sobre el proyecto y su creador.</li>
+        </ul>
+        <p>El diseño facilita la navegación desde la presentación hasta el acceso a cursos.</p>
+    </div>
+
+    <div class="acordeon-item" onclick="toggleContenido(3)">4. Barra Lateral Derecha (right-sidebar) - (Hacer clic)</div>
+    <div class="contenido">
+        <p>Muestra imágenes de productos terminados en Blender:</p>
+        <ul>
+            <li>Modelos industriales.</li>
+            <li>Diseños para publicidad.</li>
+            <li>Texturas aplicadas.</li>
+        </ul>
+        <p>Incluye botones (⬆ y ⬇) para desplazarse entre las imágenes.</p>
+    </div>
+
+    <div class="acordeon-item" onclick="toggleContenido(4)">5. Modal de Usuario (userModal) - (Hacer clic)</div>
+    <div class="contenido">
+        <p>Al presionar "Entrar", se abre un modal con:</p>
+        <ul>
+            <li><strong>Campo de nombre:</strong> Personaliza la experiencia.</li>
+            <li><strong>Selección de avatar:</strong> Imágenes interactivas.</li>
+            <li><strong>Botón de confirmación:</strong> Confirma la identidad del usuario.</li>
+        </ul>
+        <p>Esta introducción personaliza la experiencia antes de acceder a cursos.</p>
+    </div>
+
+    <div class="acordeon-item" onclick="toggleContenido(5)">6. Página de Cursos y Contenido Educativo - (Hacer clic)</div>
+    <div class="contenido">
+        <p>Tras la confirmación, se accede a una nueva página con:</p>
+        <ul>
+            <li>Cursos sobre modelado, texturización y animación en Blender.</li>
+            <li>Recursos y documentación adicional.</li>
+            <li>Material multimedia para aprendizaje práctico.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Contenedor adicional para mostrar el crédito de diseño y desarrollo -->
+<div id="creditos">
+    <p>Diseño y desarrollo de Wireframe por <strong>Jeffrey Bustamante</strong></p>
+</div>
+
+
+	
+
+
+
+
+    <script>
+	
+	function toggleGuideContenido(index) {
+    let acordeon = document.getElementById("guide-info");
+    let contenidos = acordeon.getElementsByClassName("guide-contenido");
+
+    // Alternar solo el contenido correspondiente
+    contenidos[index].classList.toggle("activo");
+}
+
+	
+	
+		
+	
+	
+        // Función para mover los elementos del sidebar hacia arriba
+        function moveSidebarUp(sidebarId) {
+            const sidebar = document.getElementById(sidebarId);
+            const elements = sidebar.querySelectorAll('div:not(.arrow)');
+            elements.forEach((element, index) => {
+                setTimeout(() => {
+                    element.style.transform = `translateY(-${(index + 1) * 10}px)`;
+                }, index * 100);
+            });
+        }
+
+        // Función para mover los elementos del sidebar hacia abajo
+        function moveSidebarDown(sidebarId) {
+            const sidebar = document.getElementById(sidebarId);
+            const elements = sidebar.querySelectorAll('div:not(.arrow)');
+            elements.forEach((element, index) => {
+                setTimeout(() => {
+                    element.style.transform = `translateY(0)`;
+                }, index * 100);
+            });
+        }
+
+       
+		
+		
+		
+		
+		// Mostrar el modal
+function openModal() {
+    document.getElementById("userModal").style.display = "flex";
+}
+
+// Ocultar el modal y redirigir si los datos son válidos
+function confirmUser() {
+    let username = document.getElementById("username").value;
+    if (username.trim() === "") {
+        alert("Por favor, ingresa tu nombre.");
+        return;
+    }
+
+    let avatar = document.querySelector(".avatar.selected");
+    if (!avatar) {
+        alert("Por favor, selecciona un avatar.");
+        return;
+    }
+
+    document.getElementById("userModal").style.display = "none";
+    window.location.href = "temario.html";
+}
+
+// Seleccionar avatar
+function selectAvatar(avatarSrc) {
+    let avatars = document.querySelectorAll(".avatar");
+    avatars.forEach(avatar => avatar.classList.remove("selected"));
+
+    let selectedAvatar = document.querySelector(`img[src='${avatarSrc}']`);
+    selectedAvatar.classList.add("selected");
+}
+		
+		
+		function toggleContenido(index) {
+            let contenido = document.getElementsByClassName("contenido");
+            contenido[index].style.display = contenido[index].style.display === "block" ? "none" : "block";
+        }
+		
+		
+		
+		
+    </script>
+</body>
+</html>

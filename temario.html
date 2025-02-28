@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireframe Temario unidades</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    margin: 0;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+#creditos1 {
+    width: 100%; /* Ocupa todo el ancho disponible */
+    margin-top: 0; /* Elimina cualquier separación con la parte superior */
+    margin-bottom: 40px; /* Agrega separación con los elementos inferiores */
+    padding: 8px; /* Reduce la altura al disminuir el padding */
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+    background-color: #f4f4f4;
+    border: 2px solid #ccc; /* Borde sutil */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+
+
+/* Línea de separación con rótulo en el centro */
+.separator {
+    position: absolute;
+    top: 140px; /* Ajusta la separación desde la parte superior */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    border-top: 2px dashed #8c8c8c; /* Línea estilo acotación */
+    text-align: center;
+}
+
+/* Rótulo sobre la línea */
+.separator::before {
+    content: "⬇ Inicia Pagina WEB - Temario Curso ⬇"; /* Texto del rótulo */
+    position: absolute;
+    top: -12px; /* Lo eleva para que quede sobre la línea */
+    left: 50%;
+    transform: translateX(-50%);
+    background: #f0f0f0; /* Fondo del rótulo */
+    padding: 3px 8px;
+    font-size: 14px;
+    color: #4a4a4a;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+
+
+/* Contenedor invisible que envuelve todo */
+#main-container {
+    width: 100%;
+    min-height: 100vh; /* Se ajusta automáticamente según el contenido */
+    display: flex;
+    flex-direction: column; /* Mantiene la disposición de los elementos */
+    align-items: center;
+    justify-content: flex-start; /* Asegura que el contenido se mantenga en su lugar */
+    position: relative; /* No afecta elementos absolutos dentro */
+	top: 120px; /* Ajusta este valor para moverlo más o menos */
+}
+
+
+
+
+/* Timeline-header */
+
+@keyframes animate-border {
+    0% { border-style: dashed; }
+    50% { border-style: dotted; } 
+    100% { border-style: dashed; } 
+}
+
+.timeline-header {
+    text-align: center;
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 3px dashed #444;
+    background-color: #e0e0e0; /* Color más suave */
+    width: 60%;
+    border-radius: 12px;
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15);
+    animation: animate-border 1s linear infinite;
+}
+
+/* Efecto hover */
+.timeline-header:hover {
+    border-color: #007bff;
+    background-color: #dcdcdc;
+    box-shadow: 6px 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Contenedor principal */
+.timeline-container {
+    width: 80%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Línea central de la línea de tiempo */
+.timeline {
+    position: absolute;
+    width: 4px;
+    background-color: #555;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Estilos generales */
+.item {
+    width: 40%;
+    padding: 15px;
+    border: 2px solid #666;
+    background-color: #e0e0e0;
+    margin: 20px 0;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.8s ease-in-out;
+    opacity: 60.7;
+    cursor: pointer;
+}
+
+/* Efecto hover (naranja con borde azul, pero más elegante) */
+.item:hover {
+    background-color: #a5d0e6; /* Naranja más sutil */
+    border-color: #0056b3; /* Azul más oscuro */
+    transform: scale(1.03);
+    box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.2);
+    opacity: 1;
+}
+
+/* Efecto de encendido secuencial solo en el borde con azul brillante */
+.item.active {
+    border-color: #00ccff; /* Azul eléctrico más brillante */
+    box-shadow: 0 0 15px rgba(0, 204, 255, 0.9), 
+                0 0 10px rgba(0, 204, 255, 0.7) inset;
+}
+
+.left {
+    align-self: flex-start;
+    margin-left: 0;
+}
+
+.right {
+    align-self: flex-end;
+    margin-right: 0;
+}
+
+/* Puntos de la línea de tiempo */
+.dot {
+    width: 14px;
+    height: 14px;
+    background-color: #007bff;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.left .dot {
+    right: -24px;
+}
+
+.right .dot {
+    left: -24px;
+}
+
+@keyframes animate-border {
+    0% { border-style: dashed; }
+    50% { border-style: dotted; } 
+    100% { border-style: dashed; } 
+}
+
+.footer {
+    width: 80%;
+    margin-top: 30px;
+    padding: 20px;
+    border: 3px dashed #444;
+    background-color: #e0e0e0;
+    text-align: center;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15);
+    animation: animate-border 1s linear infinite;
+    transition: all 0.3s ease;
+}
+
+/* Efecto hover */
+.footer:hover {
+    border-color: #007bff;
+    background-color: #dcdcdc;
+    box-shadow: 6px 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* POPUP */
+.popup-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Contenido del popup */
+.popup-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    width: 60%;
+    max-width: 800px;
+    box-shadow: 6px 6px 16px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+/* Efecto hover */
+.popup-content:hover {
+    box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Video dentro del popup */
+.popup-content video {
+    width: 100%;
+    border-radius: 8px;
+}
+
+/* Botón de cierre */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Efecto hover en botón de cierre */
+.close-btn:hover {
+    color: #ff0000;
+    transform: scale(1.1);
+}
+
+
+/* Título dentro del popup */
+.popup-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+
+
+/* Línea de separación con rótulo en el centro - Fin web */
+.separator_fin {
+    position: absolute;
+    bottom: -800px; /* Ajusta la separación desde la parte superior */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    border-top: 2px dashed #8c8c8c; /* Línea estilo acotación */
+    text-align: center;
+}
+
+/* Rótulo sobre la línea - Fin web */
+.separator_fin::before {
+    content: "Termina pagina WEB - Temario Curso"; /* Texto del rótulo */
+    position: absolute;
+    top: -12px; /* Lo eleva para que quede sobre la línea */
+    left: 50%;
+    transform: translateX(-50%);
+    background: #f0f0f0; /* Fondo del rótulo */
+    padding: 3px 8px;
+    font-size: 14px;
+    color: #4a4a4a;
+    font-weight: bold;
+    border-radius: 4px;
+}	
+	
+
+
+
+
+#acordeon {
+        font-size: 16px;
+        margin: 60px auto 220px; /* Aumentado el margen inferior */
+        background: #f0f0f0;
+        padding: 20px;
+        border: 2px solid #b0b0b0;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        width: 80%;
+        max-width: 800px;
+        position: relative;
+		top: 180px; /* Ajusta este valor según necesites */
+    }
+
+    #acordeon h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .acordeon-item {
+        background: #e0e0e0;
+        margin: 5px 0;
+        padding: 12px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    .acordeon-item:hover {
+        background: #d0d0d0;
+    }
+
+    .contenido {
+        display: none;
+        padding: 10px;
+        color: #333;
+        border-left: 3px solid #888;
+        margin-top: 5px;
+        background: #f9f9f9;
+    }
+
+   
+
+
+#creditos1 {
+    width: 100%; /* Ocupa todo el ancho disponible */
+    margin-top: 40; /* Elimina cualquier separación con la parte superior */
+    margin-bottom: 0px; /* Agrega separación con los elementos inferiores */
+    padding: 8px; /* Reduce la altura al disminuir el padding */
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+    background-color: #f4f4f4;
+    border: 2px solid #ccc; /* Borde sutil */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+
+    </style>
+</head>
+<body>
+
+<!-- Contenedor adicional para mostrar el crédito de diseño y desarrollo -->
+<div id="creditos1">
+    <p>Diseño y desarrollo de Wireframe por <strong>Jeffrey Bustamante</strong></p>
+</div>
+
+<div class="separator"></div>
+
+
+<!-- Contenedor invisible que envuelve todo -->
+    <div id="main-container">
+	
+
+    <div class="timeline-header">APRENDAMOS BLENDER - UNIDADES TEMATICAS</div>
+
+
+<div class="timeline-container">
+    <div class="timeline"></div>
+    <div class="item left"><a href="assets/modal/modal_general.html">Introducción a Blender <span class="dot"></span></a></div>
+    <div class="item right"><a href="assets/modal/modal_general.html"><span class="dot"></span> Interfaz y Navegación</a></div>
+    <div class="item left"><a href="assets/modal/modal_general.html">Modelado 3D Básico <span class="dot"></span></a></div>
+    <div class="item right"><a href="assets/modal/modal_general.html"><span class="dot"></span> Texturizado y Materiales</a></div>
+    <div class="item left"><a href="assets/modal/modal_general.html">Iluminación y Render <span class="dot"></span></a></div>
+    <div class="item right"><a href="assets/modal/modal_general.html"><span class="dot"></span> Animación Básica</a></div>
+    <div class="item left"><a href="assets/modal/modal_general.html">Esculpido Digital <span class="dot"></span></a></div>
+    <div class="item right"><a href="assets/modal/modal_general.html"><span class="dot"></span> Simulación de Física</a></div>
+    <div class="item left"><a href="assets/modal/modal_general.html">Efectos y Composición <span class="dot"></span></a></div>
+    <div class="item right"><a href="assets/modal/modal_general.html"><span class="dot"></span> Exportación y Optimización</a></div>
+</div>
+
+    <div class="footer">
+        <div><strong>Proyecto de Ingeniería 2</strong></div>
+        <div>Diseño y Desarrollo Web: Jeffrey Bustamante</div>
+        <div>Didáctica y estructura educativa medinate: Licencias - CC Colombia - Creative Commons</div>
+        <div>Diseño Visual: Jeffrey Bustamante</div>
+        <div>2025</div>
+    </div>
+	
+	
+</div>	
+	
+	
+<div class="separator_fin"></div>
+	
+	
+	
+	
+	
+<!-- Acordeón de información adicional -->
+<div id="acordeon">
+    <h2>Más información sobre el proyecto</h2>
+    
+    <div class="acordeon-item">Estructura del Proyecto y Sustentación</div>
+    <div class="contenido">
+        <p>Este proyecto busca enseñar Blender de forma didáctica con una estructura de unidades bien definida.</p>
+        <p>La línea de tiempo interactiva permite navegar por los temas de forma intuitiva.</p>
+    </div>
+
+    <div class="acordeon-item">Sustentación de la estructura del HTML y CSS</div>
+    <div class="contenido">
+        <h3>1. Estructura general del HTML</h3>
+        <p><strong>Encabezado (&lt;head&gt;)</strong></p>
+        <ul>
+            <li>Define la codificación (UTF-8) y asegura la compatibilidad con dispositivos (viewport).</li>
+            <li>Importa la fuente Poppins desde Google Fonts.</li>
+            <li>Incluye estilos CSS embebidos en la misma página.</li>
+        </ul>
+        <p><strong>Cuerpo (&lt;body&gt;)</strong></p>
+        <ul>
+            <li>Se usa flexbox en el body para centrar elementos y mantener una estructura fluida.</li>
+            <li>Contiene una cabecera de línea de tiempo (.timeline-header) con animaciones en el borde.</li>
+            <li>Un div.timeline-container que contiene una línea de tiempo (.timeline) y varios elementos .item alineados a la izquierda y derecha.</li>
+            <li>Un footer con créditos y metadatos sobre el proyecto.</li>
+            <li>Un popup modal con video para futuras interacciones.</li>
+        </ul>
+        
+        <h3>2. Justificación de la estructura CSS</h3>
+        <p><strong>Fuentes y colores:</strong></p>
+        <ul>
+            <li>Se elige Poppins por su legibilidad, y se usa una paleta de grises y azules para dar un diseño profesional.</li>
+        </ul>
+        
+        <p><strong>Efectos visuales y animaciones:</strong></p>
+        <ul>
+            <li>Se aplica @keyframes animate-border en .timeline-header y .footer, dándoles un efecto de borde dinámico.</li>
+            <li>Los .item tienen transiciones suaves y un hover que resalta la interactividad.</li>
+            <li>.popup-container tiene un fadeIn para una mejor experiencia visual.</li>
+        </ul>
+        
+        <p><strong>Estructura de la línea de tiempo (.timeline)</strong></p>
+        <ul>
+            <li><code>position: absolute</code> mantiene la línea central fija en el medio.</li>
+            <li><code>.dot</code> representa los puntos de eventos en la línea de tiempo.</li>
+            <li><code>.item</code> usa flexbox y <code>position: relative</code> para alinear los contenidos de forma correcta.</li>
+        </ul>
+    </div>
+</div>
+	
+	
+
+<!-- Contenedor adicional para mostrar el crédito de diseño y desarrollo -->
+<div id="creditos1">
+    <p>Diseño y desarrollo de Wireframe por <strong>Jeffrey Bustamante</strong></p>
+</div>
+
+
+
+
+    <!-- POPUP AUTOMÁTICO -->
+<div class="popup-container" id="popup">
+    <div class="popup-content">
+        <span class="close-btn" onclick="closePopup()">&times;</span>
+        
+        <!-- TÍTULO DENTRO DEL POPUP -->
+        <h2 class="popup-title">Bienvenidos a Blender desde Cero</h2>
+        
+        <video id="popupVideo" controls autoplay>
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            Tu navegador no soporta videos.
+        </video>
+    </div>
+</div>
+
+    <script>
+        // Mostrar popup automáticamente al cargar la página
+        window.onload = function () {
+            document.getElementById("popup").style.display = "flex";
+        };
+
+        // Cerrar popup y pausar el video
+        function closePopup() {
+            document.getElementById("popup").style.display = "none";
+            document.getElementById("popupVideo").pause();
+        }
+		
+		
+// Obtener todos los elementos de la línea de tiempo
+const items = document.querySelectorAll('.item');
+let index = 0;
+
+function animateItems() {
+    // Eliminar el efecto 'active' de todos los elementos
+    items.forEach(item => item.classList.remove('active'));
+
+    // Aplicar el efecto solo al elemento actual
+    items[index].classList.add('active');
+
+    // Mover al siguiente elemento
+    index = (index + 1) % items.length;
+}
+
+// Iniciar animación cada 2 segundos
+setInterval(animateItems, 1500);
+
+
+
+// Asignar evento de clic para redireccionar
+items.forEach(item => {
+    item.addEventListener('click', function () {
+        const modalNumber = this.getAttribute('data-modal');
+        const modalUrl = `assets/modal/modal_${modalNumber}.html`;
+
+        // Reemplazar contenido dentro de la página
+        fetch(modalUrl)
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('content').innerHTML = data;
+            })
+            .catch(error => {
+                document.getElementById('content').innerHTML = "<p>Error al cargar el contenido.</p>";
+                console.error("Error al cargar el modal:", error);
+            });
+    });
+});
+		
+	
+
+
+// Acordeon Info
+document.querySelectorAll('.acordeon-item').forEach(item => {
+        item.addEventListener('click', function () {
+            let contenido = this.nextElementSibling;
+            contenido.style.display = contenido.style.display === 'block' ? 'none' : 'block';
+        });
+    });
+		
+    </script>
+
+</body>
+</html>

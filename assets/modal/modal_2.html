@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interfaz y Navegación</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #000;
+            margin: 20px 0;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .small-videos {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .small-videos iframe {
+            width: 23%;
+            height: 120px;
+            border-radius: 8px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        }
+        .tips, .links {
+            background: #e0e0e0;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+        .links a {
+            display: block;
+            color: #0056b3;
+            text-decoration: none;
+            margin: 5px 0;
+        }
+        .links a:hover {
+            text-decoration: underline;
+        }
+        .back-button {
+            display: inline-block;
+            margin: 20px 0;
+            padding: 10px 15px;
+            background: #0056b3;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .back-button:hover {
+            background: #003d80;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../index.html" class="back-button">⬅ Volver</a>
+        <h1>Interfaz y Navegación</h1>
+        <p>Aprende a moverte dentro de Blender, personalizar tu espacio de trabajo y navegar entre las herramientas esenciales.</p>
+        
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/your-video-id" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <div class="small-videos">
+            <iframe src="https://www.youtube.com/embed/video1" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/video2" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/video3" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/video4" frameborder="0" allowfullscreen></iframe>
+        </div>
+        
+        <div class="tips">
+            <h2>Tips Rápidos</h2>
+            <ul>
+                <li>Usa la tecla "Tab" para cambiar entre modos de edición.</li>
+                <li>El botón derecho selecciona objetos por defecto.</li>
+                <li>Personaliza tus accesos directos en las preferencias.</li>
+            </ul>
+        </div>
+
+        <div class="links">
+            <h2>Más Información</h2>
+            <a href="https://www.blender.org/manual/" target="_blank">Manual oficial de Blender</a>
+            <a href="https://www.youtube.com/c/BlenderFoundation" target="_blank">Canal oficial de Blender</a>
+        </div>
+        
+        <p>Practica la navegación y domina la interfaz de Blender para trabajar más eficientemente.</p>
+    </div>
+</body>
+</html>

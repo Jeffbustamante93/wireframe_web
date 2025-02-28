@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blender Para Todos</title>
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background-color: #eaeaea;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            width: 100%;
+            flex-direction: column;
+        }
+
+        #main-container {
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .description-container {
+            width: 80%;
+            max-width: 800px;
+            text-align: center;
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 95%;
+            max-width: 1300px;
+            border: 2px dashed #444;
+            padding: 30px;
+            background: #fff;
+            box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            gap: 30px;
+        }
+
+        .sidebar {
+            width: 20%;
+            height: 95%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 2px dashed #444;
+            padding: 20px;
+            background: #f8f8f8;
+            border-radius: 8px;
+            gap: 15px;
+            overflow: hidden;
+        }
+
+        .central-content {
+            width: 60%;
+            height: 91.5%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            border: 2px dashed #444;
+            padding: 30px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            gap: 20px;
+        }
+
+        .footer-container {
+            margin-top: 20px;
+            padding: 15px;
+            border: 3px solid #333;
+            text-align: center;
+            background: #eee;
+            width: 100%;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .accordion {
+            width: 80%;
+            max-width: 800px;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid #ccc;
+        }
+
+        .accordion-header {
+            background: #ddd;
+            padding: 15px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 15px;
+            background: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div id="main-container">
+        <div class="description-container">
+            <h1>Blender Para Todos</h1>
+            <p>Un sitio para aprender Blender de manera fácil y accesible.</p>
+        </div>
+
+        <div class="container">
+            <div class="sidebar">Izquierda</div>
+            <div class="central-content">Contenido central</div>
+            <div class="sidebar">Derecha</div>
+        </div>
+
+        <div class="accordion">
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">Sección 1</div>
+                <div class="accordion-content">Contenido de la sección 1.</div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">Sección 2</div>
+                <div class="accordion-content">Contenido de la sección 2.</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleAccordion(element) {
+            let content = element.nextElementSibling;
+            content.style.display = content.style.display === "block" ? "none" : "block";
+        }
+    </script>
+</body>
+</html>

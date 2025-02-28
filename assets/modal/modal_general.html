@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireframe Modal</title>
+    <style>
+        * {
+            margin: 0; /* Elimina el margen predeterminado de todos los elementos */
+            padding: 0; /* Elimina el padding predeterminado de todos los elementos */
+            box-sizing: border-box; /* Asegura que el padding y el borde no aumenten el tamaño total de los elementos */
+            font-family: Arial, sans-serif; /* Define la fuente predeterminada para el documento */
+        }
+
+        body {
+            background: #ddd; /* Color de fondo gris claro */
+            display: flex; /* Usa flexbox para organizar el contenido */
+            align-items: center; /* Centra el contenido verticalmente */
+            justify-content: center; /* Centra el contenido horizontalmente */
+            min-height: 100vh; /* La altura mínima es el 100% de la pantalla */
+            flex-direction: column; /* Acomoda los elementos en columna */
+        }
+
+        /* Contenedor principal - superior e inferior */
+        .container {
+            width: 90%; /* Ocupa el 90% del ancho disponible */
+            max-width: 1200px; /* Limita el ancho máximo a 1200px */
+            min-height: 1020px; /* Altura mínima de 900px */
+            background: #fff; /* Fondo blanco */
+            padding: 20px; /* Espaciado interno */
+            border: 2px dashed #000; /* Borde punteado negro */
+            position: relative; /* Posicionamiento relativo */
+            display: flex; /* Usa flexbox */
+            flex-direction: column; /* Alinea los elementos en columna */
+            align-items: center; /* Centra los elementos horizontalmente */  
+            margin-top: 60px; /* Separación del elemento superior */
+            margin-bottom: 40px; /* Separación del elemento inferior */
+        }
+
+        #Info_unidad {
+            width: 100%; /* Ocupa todo el ancho disponible */
+            margin-top: 0; /* Sin margen superior */
+            margin-bottom: 40px; /* Espaciado inferior */
+            padding: 8px; /* Espaciado interno más reducido */
+            text-align: center; /* Centra el texto */
+            font-size: 14px;
+            color: #333; /* Un tono más oscuro para mayor contraste */
+            background-color: #eee; /* Color de fondo más neutral */
+            border: 2px solid #999; /* Borde más visible pero aún sutil */
+            box-shadow: none; /* Eliminamos sombras para un estilo más wireframe */
+            font-family: Arial, sans-serif; /* Fuente simple y clara */
+        }
+
+        /* Línea de separación con rótulo en el centro */
+        .separator {
+            position: absolute;
+            top: 180px; /* Ajusta la separación desde la parte superior */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            border-top: 2px dashed #8c8c8c; /* Línea estilo acotación */
+            text-align: center;
+        }
+
+        /* Rótulo sobre la línea */
+        .separator::before {
+            content: "⬇ Inicia Pagina WEB - Unidad 1 Curso ⬇"; /* Texto del rótulo */
+            position: absolute;
+            top: -12px; /* Lo eleva para que quede sobre la línea */
+            left: 50%;
+            transform: translateX(-50%);
+            background: #f0f0f0; /* Fondo del rótulo */
+            padding: 3px 8px;
+            font-size: 14px;
+            color: #4a4a4a;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+
+        .modal {
+            width: 80%; /* El modal ocupa el 80% del ancho disponible */
+            max-width: 900px; /* Máximo ancho de 900px */
+            background: rgba(200, 200, 200, 0.9); /* Fondo gris semitransparente */
+            padding: 20px; /* Espaciado interno de 20px */
+            border: 2px dashed #444; /* Borde punteado gris oscuro */
+            position: relative; /* Posicionamiento relativo al documento */
+            margin-top: 20px; /* Margen superior de 20px */
+            margin-bottom: 20px; /* Margen superior de 20px */
+            text-align: center; /* Centra el texto dentro del modal */
+        }
+
+        .section {
+            border: 2px dashed #666; /* Borde punteado gris oscuro */
+            margin: 10px 0; /* Margen vertical de 10px */
+            padding: 10px; /* Espaciado interno de 10px */
+            text-align: center; /* Centra el texto dentro de la sección */
+            background: #bbb; /* Fondo gris claro */
+        }
+
+        .video-main {
+            height: 250px; /* Altura fija de 250px */
+            background: #999; /* Fondo gris medio */
+            display: flex; /* Usa flexbox */
+            align-items: center; /* Centra verticalmente */
+            justify-content: center; /* Centra horizontalmente */
+            position: relative; /* Posicionamiento relativo al documento */
+        }
+
+        .video-main::after {
+            content: "[Video Principal]"; /* Texto ficticio para indicar el video principal */
+            font-size: 20px; /* Tamaño de fuente de 20px */
+            color: #fff; /* Texto blanco */
+        }
+
+        .slider {
+            height: 150px; /* Altura fija de 150px */
+            background: #aaa; /* Fondo gris medio */
+            display: flex; /* Usa flexbox */
+            justify-content: space-around; /* Espacia los elementos uniformemente */
+            align-items: center; /* Centra verticalmente los elementos */
+            padding: 10px; /* Espaciado interno de 10px */
+        }
+
+        .slider .video-block {
+            width: 100px; /* Ancho de cada bloque de video */
+            height: 80px; /* Altura de cada bloque de video */
+            background: #777; /* Fondo gris oscuro */
+            display: flex; /* Usa flexbox */
+            align-items: center; /* Centra verticalmente */
+            justify-content: center; /* Centra horizontalmente */
+            border: 1px dashed #555; /* Borde punteado gris oscuro */
+            cursor: pointer; /* Muestra un puntero al pasar el mouse */
+        }
+
+        .extra-content {
+            display: flex; /* Usa flexbox */
+            justify-content: space-around; /* Distribuye los elementos uniformemente */
+            align-items: center; /* Centra verticalmente los elementos */
+            height: 100px; /* Altura fija de 100px */
+            background: #888; /* Fondo gris medio */
+            padding: 10px; /* Espaciado interno de 10px */
+        }
+
+        .extra-content .download-box {
+            width: 120px; /* Ancho de 120px */
+            height: 60px; /* Altura de 60px */
+            background: #666; /* Fondo gris oscuro */
+            display: flex; /* Usa flexbox */
+            align-items: center; /* Centra verticalmente */
+            justify-content: center; /* Centra horizontalmente */
+            border: 1px dashed #444; /* Borde punteado gris oscuro */
+        }
+
+        .download-box a {
+            text-decoration: none; /* Elimina el subrayado del enlace */
+            color: #fff; /* Color del texto */
+            font-weight: bold; /* Texto en negrita */
+			font-size: 14px;
+            display: flex; /* Usa flexbox para centrar el contenido */
+            align-items: center; /* Centra verticalmente */
+            justify-content: center; /* Centra horizontalmente */
+            width: 100%; /* Ocupa todo el ancho del contenedor */
+            height: 100%; /* Ocupa toda la altura del contenedor */
+        }
+
+        /* Línea de separación con rótulo en el centro - Fin web */
+        .separator_fin {
+            position: absolute;
+            bottom: 40px; /* Ajusta la separación desde la parte superior */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            border-top: 2px dashed #8c8c8c; /* Línea estilo acotación */
+            text-align: center;
+        }
+
+        /* Rótulo sobre la línea - Fin web */
+        .separator_fin::before {
+            content: "Termina pagina WEB - Unidad 1 Curso"; /* Texto del rótulo */ 
+            position: absolute;
+            top: -12px; /* Lo eleva para que quede sobre la línea */
+            left: 50%;
+            transform: translateX(-50%);
+            background: #f0f0f0; /* Fondo del rótulo */
+            padding: 3px 8px;
+            font-size: 14px;
+            color: #4a4a4a;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="Info_unidad">
+            <p><strong>Sección de Unidad X: Contenido y Recursos</strong></p>  
+            <p><strong>En esta pestaña encontrarás:</strong></p>  
+            <p>✔️ Todos los <strong>videos explicativos</strong> de la unidad.</p>  
+            <p>✔️ Materiales complementarios para reforzar el aprendizaje.</p>  
+            <p>✔️ Recursos organizados para facilitar el acceso y la comprensión.</p>  
+            <p>Este espacio ha sido diseñado para brindarte una experiencia de aprendizaje estructurada y eficiente.</p>  
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="modal">
+            <div class="section">Título Tema</div>
+            <div class="section">Descripción Tema</div>
+            <div class="section video-main"></div>
+            <div class="section slider">
+                <div class="video-block">
+					<a href="https://www.youtube.com/watch?v=O-tV7uBf5LI" target="_blank">Video 2</a>
+					</div>
+				<div class="video-block">
+					<a href="https://www.youtube.com/watch?v=UcOpF-pNA-M" target="_blank">Video 3</a>
+					</div>
+				<div class="video-block">
+					<a href="https://www.youtube.com/watch?v=CI3VORdxh8o" target="_blank">Video 4</a>
+					</div>
+				<div class="video-block">
+					<a href="https://www.youtube.com/playlist?list=PL_7UEOgbqi2Q0qkiLvo8YWWYAz8SJgEny" target="_blank">Video 5</a>
+					</div>
+            </div>
+            
+			<div class="section extra-content">
+    <div class="download-box">
+        <a href="https://drive.google.com/file/d/1lbefw1Pi_4SGmshmjkTPxbeMSlCuSYYn/view?usp=sharing" 
+           target="_blank" 
+           rel="noopener noreferrer">
+           Ver y Descargar PDF 1
+        </a>
+    </div>
+    <div class="download-box">
+        <a href="https://drive.google.com/file/d/1lbefw1Pi_4SGmshmjkTPxbeMSlCuSYYn/view?usp=sharing" 
+           target="_blank" 
+           rel="noopener noreferrer">
+           Ver y Descargar PDF 2
+        </a>
+    </div>
+    <div class="download-box">
+        <a href="https://drive.google.com/file/d/1lbefw1Pi_4SGmshmjkTPxbeMSlCuSYYn/view?usp=sharing" 
+           target="_blank" 
+           rel="noopener noreferrer">
+           Ver y Descargar PDF 3
+        </a>
+    </div>
+</div>
+        </div>
+        
+        <div id="creditos">
+            <p>Diseño y desarrollo de Wireframe por<strong>Jeffrey Bustamante</strong></p>
+        </div>
+
+        <div class="separator_fin"></div>
+    </div>
+</body>
+</html>
