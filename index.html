@@ -594,6 +594,39 @@ button:hover {
 #close-popup:hover {
     background: #0056b3;
 }
+
+
+/* Flechas con efecto de luz y filtro grisáceo */
+.indicador {
+    position: absolute;
+    width: 50px; /* Tamaño ajustable */
+    height: auto;
+    animation: destello 1s infinite alternate;
+    transform: rotate(180deg); /* Rotar en espejo */
+    z-index: 9999; /* Por encima de todo */
+
+    /* Filtro para hacer la imagen más gris pero distinguible */
+    filter: grayscale(60%) brightness(120%) drop-shadow(0px 10px 15px rgba(255, 255, 255, 0.3));
+}
+
+/* Ubicaciones específicas con píxeles */
+.indicador-arriba {
+    top: 250px; /* Ajustado más abajo pero sigue arriba */
+    left: 250px; /* Más a la derecha */
+}
+
+.indicador-abajo {
+    bottom: -700px; /* Bien pegada abajo */
+    left: 250px; /* Más a la derecha */
+}
+
+/* Nueva animación para evitar conflictos */
+@keyframes destello {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+
 </style>
 </head>
 <body>
@@ -607,6 +640,11 @@ button:hover {
         <button id="close-popup">Entendido</button>
     </div>
 </div>
+
+
+	<img src="assets/img/flecha-izquierda.png" class="indicador indicador-arriba">
+	<img src="assets/img/flecha-izquierda.png" class="indicador indicador-abajo">
+
 	
 <!-- Contenedor adicional para mostrar el crédito de diseño y desarrollo -->
 <div id="creditos">
