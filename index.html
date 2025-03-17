@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wireframe Proyecto index</title>
+    <title>Wireframe Proyecto</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
 /* Estilos generales del cuerpo */
@@ -154,7 +154,8 @@ body {
 }
   /* Fin Estilo Container */
 
-    /* Estilo de las barras laterales */
+
+/* Estilo de las barras laterales */
 .sidebar {
     width: 20%; /* Ancho personalizable */
     height: 95%; /* Altura personalizable */
@@ -191,6 +192,18 @@ body {
     color: #444; /* Color de texto más oscuro */
     border-radius: 8px; /* Bordes más redondeados */
     transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease; /* Transiciones suaves */
+    display: flex; /* Añadido para centrar la imagen */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    overflow: hidden; /* Evita que la imagen se desborde */
+}
+
+/* Estilos específicos para las imágenes dentro de las casillas */
+.sidebar div img {
+    width: 100%; /* La imagen ocupa todo el ancho de la casilla */
+    height: 100%; /* La imagen ocupa toda la altura de la casilla */
+    object-fit: cover; /* Ajusta la imagen para cubrir el espacio sin distorsionarla */
+    border-radius: 6px; /* Bordes redondeados para la imagen */
 }
 
 /* Efecto hover en los elementos del sidebar */
@@ -215,21 +228,37 @@ body {
     color: #007bff; /* Cambio de color al pasar el mouse */
 }
 
-/* Texto pequeño dentro del mismo bloque */
-.arrow::after {
-    content: "Las imágenes suben";
-    display: block;
-    font-size: 10px;
-    color: #777;
-    margin-top: -30px;
-    transition: color 0.3s ease; /* Transición suave para el color */
+/* NUEVO CÓDIGO AÑADIDO */
+
+
+/* Animación para iluminar las imágenes de forma secuencial */
+@keyframes iluminar {
+    0% { filter: brightness(1); }
+    50% { filter: brightness(1.5); }
+    100% { filter: brightness(1); }
 }
 
-/* Efecto hover en el texto pequeño */
-.arrow:hover::after {
-    color: #007bff; /* Cambio de color al pasar el mouse */
+.sidebar div:nth-child(1) img {
+    animation: iluminar 2s infinite alternate;
 }
-	
+.sidebar div:nth-child(2) img {
+    animation: iluminar 2s infinite alternate 0.5s;
+}
+.sidebar div:nth-child(3) img {
+    animation: iluminar 2s infinite alternate 1s;
+}
+.sidebar div:nth-child(4) img {
+    animation: iluminar 2s infinite alternate 1.5s;
+}
+.sidebar div:nth-child(5) img {
+    animation: iluminar 2s infinite alternate 2s;
+}
+
+
+
+
+
+
 	
 	
 
@@ -548,7 +577,10 @@ button:hover {
         border-top: 2px solid #ccc;
     }
 	
-		/* Estilos del popup */
+	
+			
+			
+				/* Estilos del popup */
 #popup {
     position: fixed;
     top: 0;
@@ -595,46 +627,72 @@ button:hover {
     background: #0056b3;
 }
 
-
+	
+	
+	
 /* Flechas con efecto de luz y filtro grisáceo */
 .indicador {
     position: absolute;
     width: 50px; /* Tamaño ajustable */
     height: auto;
-    animation: destello 1s infinite alternate;
+    animation: destello 3.5s infinite ease-in-out; /* Animación más suave */
     transform: rotate(180deg); /* Rotar en espejo */
     z-index: 9999; /* Por encima de todo */
-
-    /* Filtro para hacer la imagen más gris pero distinguible */
-    filter: grayscale(60%) brightness(120%) drop-shadow(0px 10px 15px rgba(255, 255, 255, 0.3));
 }
 
-/* Ubicaciones específicas con píxeles */
+/* Filtro general para hacer la imagen más gris pero distinguible */
 .indicador-arriba {
     top: 250px; /* Ajustado más abajo pero sigue arriba */
-    left: 250px; /* Más a la derecha */
+    left: 280px; /* Más a la derecha */
+    filter: grayscale(60%) brightness(120%) drop-shadow(0px 10px 15px rgba(255, 255, 255, 0.1));
 }
 
+/* Mayor brillo para el indicador abajo */
 .indicador-abajo {
-    bottom: -700px; /* Bien pegada abajo */
-    left: 250px; /* Más a la derecha */
+    bottom: -750px; /* Bien pegada abajo */
+    left: 280px; /* Más a la derecha */
+    filter: grayscale(40%) brightness(150%) drop-shadow(0px 10px 20px rgba(255, 255, 255, 0.3));
 }
 
-/* Nueva animación para evitar conflictos */
+/* Filtro azul separado */
+.indicador-azul {
+    filter: grayscale(30%) brightness(180%) drop-shadow(0px 10px 25px rgba(0, 100, 255, 0.5));
+}
+
+/* Animación de encendido y apagado suave */
 @keyframes destello {
-    0% { opacity: 1; }
-    100% { opacity: 0; }
+    0% { opacity: 0; }      /* Comienza apagado */
+    22% { opacity: 1; }     /* Se enciende suavemente en 0.8s */
+    57% { opacity: 1; }     /* Permanece encendido por 1.2s */
+    100% { opacity: 0; }    /* Se apaga suavemente en 1.5s */
 }
 
 
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 </style>
 </head>
 <body>
 	
-<!-- Popup de bienvenida -->
+	<!-- Popup de bienvenida -->
 <div id="popup">
     <div class="popup-content">
-        <h2>Bienvenidos al wireframe de la web blender</h2>
+        <h2>Bienvenidos a la web del curso de Blender</h2>
         <p>Compañeros y docente, antes de comenzar, encontrarán una guía en la parte superior que explica la estructura y navegación del wireframe. En la parte inferior podrán acceder a la sustentación de los contenidos.  
         Esta web es un wireframe interactivo diseñado para explorar cada sección de manera dinámica y comprender su funcionalidad.</p>
         <button id="close-popup">Entendido</button>
@@ -642,13 +700,15 @@ button:hover {
 </div>
 
 
+
 	<img src="assets/img/flecha-izquierda.png" class="indicador indicador-arriba">
-	<img src="assets/img/flecha-izquierda.png" class="indicador indicador-abajo">
+	<img src="assets/img/flecha-izquierda-a.png" class="indicador indicador-abajo">
+
 
 	
 <!-- Contenedor adicional para mostrar el crédito de diseño y desarrollo -->
 <div id="creditos">
-    <p>Diseño y desarrollo de Wireframe por <strong>Jeffrey Bustamante</strong></p>
+    <p>Diseño y desarrollo por <strong>Jeffrey Bustamante</strong></p>
 </div>
 	
 
@@ -660,7 +720,7 @@ button:hover {
     <!-- Acordeón dentro de #guide-info -->
     
 
-    <div class="guide-acordeon-item" onclick="toggleGuideContenido(0)">1. Estructura del Wireframe - (Hacer clic)</div>
+    <div class="guide-acordeon-item" onclick="toggleGuideContenido(0)">2. Estructura del Wireframe - (Hacer clic)</div>
     <div class="guide-contenido">
         <p>El wireframe diseñado aquí representa una página <strong>dinámica</strong>, donde la página principal (index) actúa como el núcleo de navegación del sitio educativo.</p>
         <ul>
@@ -670,7 +730,7 @@ button:hover {
         </ul>
     </div>
 
-    <div class="guide-acordeon-item" onclick="toggleGuideContenido(1)">2. Ventajas del Enfoque Usado - (Hacer clic)</div>
+    <div class="guide-acordeon-item" onclick="toggleGuideContenido(1)">3. Ventajas del Enfoque Usado - (Hacer clic)</div>
     <div class="guide-contenido">
         <p>El enfoque utilizado ofrece varias ventajas:</p>
         <ul>
@@ -697,20 +757,20 @@ button:hover {
 	
     <!-- Contenedor principal -->
     <div class="container">
-        <!-- Barra lateral izquierda -->
-        <div class="sidebar" id="left-sidebar">
-            <div class="arrow" onclick="moveSidebarUp('left-sidebar')"> ⬆</div>
-            <div>Imagen 1</div>
-            <div>Imagen 2</div>
-            <div>Imagen 3</div>
-            <div>Imagen 4</div>
-            <div class="arrow" onclick="moveSidebarDown('left-sidebar')">⬇</div>
-        </div>
+        <!-- Barra lateral izquierda IMAGENES PNG-->
+<div class="sidebar" id="left-sidebar">
+    <div class="arrow" onclick="moveSidebarUp('left-sidebar')"> ⬆</div>
+    <div><img src="assets/img/img.png" alt="Imagen"></div>
+    <div><img src="assets/img/img.png" alt="Imagen"></div>
+    <div><img src="assets/img/img.png" alt="Imagen"></div>
+    <div><img src="assets/img/img.png" alt="Imagen"></div>
+    <div class="arrow" onclick="moveSidebarDown('left-sidebar')">⬇</div>
+</div>
 
         <!-- Contenedor central -->
         <div class="central-content">
             <!-- Título del proyecto -->
-            <div class="project-name">Blender Para Todos</div>
+            <div class="project-name">Blender Lab</div>
 
             <!-- Logo de la marca -->
             <div class="brand-logo">
@@ -734,15 +794,15 @@ button:hover {
         </div>
 
         <!-- Barra lateral derecha -->
-        <div class="sidebar" id="right-sidebar">
-            <div class="arrow" onclick="moveSidebarUp('right-sidebar')">⬆</div>
-            <div>Imagen 5</div>
-            <div>Imagen 6</div>
-            <div>Imagen 7</div>
-            <div>Imagen 8</div>
-            <div class="arrow" onclick="moveSidebarDown('right-sidebar')">⬇</div>
-        </div>
-    </div>
+		<div class="sidebar" id="right-sidebar">
+			<div class="arrow" onclick="moveSidebarUp('right-sidebar')">⬆</div>
+			<div><img src="assets/img/img2.png" alt="Imagen"></div>
+			<div><img src="assets/img/img2.png" alt="Imagen"></div>
+			<div><img src="assets/img/img2.png" alt="Imagen"></div>
+			<div><img src="assets/img/img2.png" alt="Imagen"></div>
+			<div class="arrow" onclick="moveSidebarDown('right-sidebar')">⬇</div>
+		</div>
+	</div>
 	
 	
 	<!-- Modal -->
@@ -840,7 +900,7 @@ button:hover {
 
 <!-- Contenedor adicional para mostrar el crédito de diseño y desarrollo -->
 <div id="creditos">
-    <p>Diseño y desarrollo de Wireframe por <strong>Jeffrey Bustamante</strong></p>
+    <p>Diseño y desarrollo por <strong>Jeffrey Bustamante</strong></p>
 </div>
 
 
@@ -886,10 +946,10 @@ button:hover {
             });
         }
 
-       
-		
-		
-		
+
+
+
+     
 		
 		// Mostrar el modal
 function openModal() {
@@ -929,8 +989,8 @@ function selectAvatar(avatarSrc) {
             contenido[index].style.display = contenido[index].style.display === "block" ? "none" : "block";
         }
 		
-
-	document.addEventListener("DOMContentLoaded", function () {
+		
+				document.addEventListener("DOMContentLoaded", function () {
     // Muestra el popup al cargar la página
     const popup = document.getElementById("popup");
     const closePopup = document.getElementById("close-popup");
@@ -939,7 +999,6 @@ function selectAvatar(avatarSrc) {
         popup.style.display = "none";
     });
 });
-		
 		
     </script>
 </body>
