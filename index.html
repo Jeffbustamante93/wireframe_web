@@ -13,7 +13,7 @@ body {
     margin: 0;
     padding: 0;
     width: 100%;
-    display: block; /* Cambiado de flex a block */
+    display: block; 
 }
 
 /* Contenedor de información */
@@ -85,12 +85,6 @@ body {
     }
 }
 
-
-
-
-
-
-
 /* Contenedor invisible que envuelve todo */
 #main-container {
     width: 100%;
@@ -98,25 +92,23 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative; /* Mantiene su estructura sin afectar #spa-info */
+    position: relative; 
 }
-
-
 
 /* Línea de separación con rótulo en el centro */
 .separator {
     position: absolute;
-    top: 10px; /* Ajusta la separación desde la parte superior */
+    top: 10px; 
     left: 50%;
     transform: translateX(-50%);
     width: 90%;
-    border-top: 2px dashed #8c8c8c; /* Línea estilo acotación */
+    border-top: 2px dashed #8c8c8c; 
     text-align: center;
 }
 
 /* Rótulo sobre la línea */
 .separator::before {
-    content: "⬇ Inicia Sitio WEB - Index Principal ⬇"; /* Texto del rótulo */
+    content: "⬇ Inicia Sitio WEB - Index Principal ⬇"; 
     position: absolute;
     top: -12px; /* Lo eleva para que quede sobre la línea */
     left: 50%;
@@ -141,16 +133,16 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 95%; /* Ancho personalizable */
-    height: 80vh; /* Altura personalizable */
+    width: 95%; 
+    height: 80vh; 
     max-width: 1300px;
-    border: 3px dashed #444; /* Borde punteado gris oscuro */
+    border: 3px dashed #444; 
     padding: 30px;
     background: #fff;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
     border-radius: 12px;
     gap: 30px;
-    animation: animate-border 1s linear infinite; /* Animación de borde */
+    animation: animate-border 1s linear infinite; 
 }
   /* Fin Estilo Container */
 
